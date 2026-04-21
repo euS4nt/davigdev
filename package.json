@@ -1,0 +1,23 @@
+{
+  "name": "davigdev",
+  "version": "1.0.0",
+  "description": "Davi Gabriel - Soluções Digitais | Portfolio Website",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/euS4nt/davigdev.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/euS4nt/davigdev/issues"
+  },
+  "homepage": "https://github.com/euS4nt/davigdev#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
