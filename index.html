@@ -171,7 +171,7 @@
             z-index: 1;
         }
 
-        /* Logos Flutuantes Refinadas */
+        /* Logo Flutuante Centralizada no Fundo */
         .bg-shapes {
             position: absolute;
             top: 0;
@@ -180,7 +180,7 @@
             height: 100%;
             pointer-events: none;
             z-index: -1;
-            filter: blur(2px); /* Desfoque suave nas formas de fundo */
+            filter: blur(1px); /* Desfoque muito suave */
         }
 
         .floating-logo {
@@ -189,15 +189,19 @@
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
-            opacity: 0.30;
-            animation: float 6s ease-in-out infinite;
+            animation: float 5s ease-in-out infinite;
         }
 
-        .shape-1 { top: 15%; left: 5%; width: 150px; height: 150px; animation-delay: 0s; }
-        .shape-2 { top: 60%; left: 80%; width: 280px; height: 280px; animation-delay: -2s; opacity: 0.30; }
-        .shape-3 { top: 20%; left: 75%; width: 90px; height: 90px; animation-delay: -4s; }
-        .shape-4 { top: 70%; left: 10%; width: 200px; height: 200px; animation-delay: -1s; opacity: 0.30; }
-        .shape-5 { top: 40%; left: 35%; width: 500px; height: 500px; opacity: 0.30; animation-delay: -3s; }
+        /* Classe específica para centralizar perfeitamente */
+        .single-center-logo {
+            top: 50%;
+            left: 50%;
+            width: 800px;
+            height: 800px;
+            margin-top: -400px; /* Metade da altura */
+            margin-left: -400px; /* Metade da largura */
+            opacity: 0.06;
+        }
 
         .hero-content {
             position: relative;
@@ -515,8 +519,13 @@
             .hero-content h1 { font-size: 2.5rem; }
             .hero-content p { font-size: 1rem; padding: 0 10px; }
             
-            .shape-1 { top: 5%; width: 80px; height: 80px; }
-            .shape-5 { width: 300px; height: 300px; opacity: 0.02; }
+            /* Ajuste da logo flutuante no Mobile */
+            .single-center-logo { 
+                width: 400px; 
+                height: 400px; 
+                margin-top: -200px;
+                margin-left: -200px;
+            }
 
             .section-title { font-size: 2.2rem; margin-bottom: 40px; }
 
@@ -559,11 +568,7 @@
 
     <section id="hero" class="hidden">
         <div class="bg-shapes">
-            <div class="floating-logo shape-1"></div>
-            <div class="floating-logo shape-2"></div>
-            <div class="floating-logo shape-3"></div>
-            <div class="floating-logo shape-4"></div>
-            <div class="floating-logo shape-5"></div>
+            <div class="floating-logo single-center-logo"></div>
         </div>
 
         <div class="container hero-content">
