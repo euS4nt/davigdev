@@ -65,7 +65,7 @@ header {
 }
 
 .logo {
-    height: 180px;
+    height: 185px;
 }
 
 nav ul {
@@ -117,6 +117,21 @@ nav a:hover {
     background-color: var(--color-5);
 }
 
+/* =========================================
+   ANIMAÇÕES GLOBAIS
+   ========================================= */
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(3deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+    100% { transform: scale(1); }
+}
+
 /* Hero Section */
 #hero {
     height: 100vh;
@@ -126,28 +141,38 @@ nav a:hover {
     text-align: center;
     background: radial-gradient(circle at top right, rgba(179, 73, 245, 0.1), transparent 40%),
                 radial-gradient(circle at bottom left, rgba(241, 143, 52, 0.1), transparent 40%);
-    position: relative; /* Adicionado para referenciar a marca d'água */
-    overflow: hidden; /* Garante que a imagem de fundo não crie barras de rolagem */
+    position: relative; 
+    overflow: hidden; 
     z-index: 1;
 }
 
-/* MARCA D'ÁGUA DA LOGO NO FUNDO - CENTRALIZADA */
-#hero::before {
-    content: '';
+/* MÚLTIPLAS LOGOS FLUTUANTES NO FUNDO */
+.bg-shapes {
     position: absolute;
-    top: 50%;
-    left: 50%; /* Centraliza horizontalmente */
-    transform: translate(-50%, -50%); /* Ajusta o centro exato */
-    width: 800px; /* Tamanho da imagem */
-    height: 800px;
-    background-image: url('./logo.svg');
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Ignora cliques */
+    z-index: -1; /* Fica atrás do conteúdo */
+}
+
+.floating-logo {
+    position: absolute;
+    background-image: url('./logo.svg'); /* Mude para logohor+.svg se preferir */
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    opacity: 0.10; /* Transparência muito suave, não atrapalha a leitura */
-    z-index: -1; /* Mantém atrás de todos os textos e botões */
-    pointer-events: none; /* Evita que a imagem intercepte cliques */
+    opacity: 0.30; /* Opacidade suave */
+    animation: float 6s ease-in-out infinite;
 }
+
+/* Posições, tamanhos e delays variados para um efeito natural */
+.shape-1 { top: 15%; left: 5%; width: 120px; height: 120px; animation-delay: 0s; }
+.shape-2 { top: 65%; left: 85%; width: 250px; height: 250px; animation-delay: -2s; }
+.shape-3 { top: 25%; left: 75%; width: 80px; height: 80px; animation-delay: -4s; }
+.shape-4 { top: 70%; left: 15%; width: 180px; height: 180px; animation-delay: -1s; opacity: 0.30; }
+.shape-5 { top: 35%; left: 40%; width: 400px; height: 400px; opacity: 0.30; animation-delay: -3s; }
 
 /* Ajuste para garantir que o texto fique acima do fundo */
 .hero-content {
@@ -239,6 +264,12 @@ nav a:hover {
     font-size: 3rem;
     color: var(--color-5);
     margin-bottom: 20px;
+}
+
+/* ANIMAÇÃO DE PULSO NOS ÍCONES */
+.card-icon i {
+    display: inline-block;
+    animation: pulse 2s infinite ease-in-out;
 }
 
 .card-produto h3 {
@@ -413,12 +444,10 @@ footer {
         padding: 0 15px;
     }
 
-    /* Ajuste da logo de fundo para Mobile (já estava centralizada) */
-    #hero::before {
-        width: 400px;
-        height: 400px;
-        /* left e transform herdados da regra geral e funcionam perfeitamente aqui */
-    }
+    /* Oculta ou diminui algumas formas no celular para não poluir */
+    .shape-1 { top: 5%; width: 80px; height: 80px; }
+    .shape-2 { top: 80%; width: 120px; height: 120px; }
+    .shape-5 { width: 300px; height: 300px; opacity: 0.02; }
 
     .section-title {
         font-size: 2rem;
@@ -458,6 +487,15 @@ footer {
     </header>
 
     <section id="hero" class="hidden">
+        
+        <div class="bg-shapes">
+            <div class="floating-logo shape-1"></div>
+            <div class="floating-logo shape-2"></div>
+            <div class="floating-logo shape-3"></div>
+            <div class="floating-logo shape-4"></div>
+            <div class="floating-logo shape-5"></div>
+        </div>
+
         <div class="container hero-content">
             <h1>Soluções Digitais de <span>Alta Performance</span></h1>
             <p>Escale seus resultados com um design moderno e uma presença online magnética.</p>
